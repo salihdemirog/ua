@@ -1,15 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using UIusalAjans.Domain.Entities;
 using UlusalAjans.Data.Abstract;
+using UlusalAjans.Domain.Dtos;
 
 namespace UlusalAjans.Data.EntityFramework
 {
     public class EfCategoryService : ICategoryService
     {
-        private readonly NorthwindContext _context;   
-        public EfCategoryService(NorthwindContext context)
+        private readonly NorthwindContext _context;
+        private readonly IMapper _mapper;
+
+        public EfCategoryService(NorthwindContext context, IMapper mapper)
         {
-            _context = context; 
+            _context = context;
+            _mapper = mapper;
         }
 
         public void Delete(int id)
@@ -22,39 +27,43 @@ namespace UlusalAjans.Data.EntityFramework
             _context.SaveChanges();
         }
 
-        public IEnumerable<Category> GetAll()
+        public IEnumerable<CategoryDto> GetAll()
         {
-            return _context.Categories;
+            var categories = _context.Categories;
+
+            return _mapper.Map<IEnumerable<CategoryDto>>(categories);
         }
 
-        public Category GetById(int id)
+        public CategoryDto GetById(int id)
         {
-            return _context.Categories.SingleOrDefault(p => p.Id == id);
-            
+            var category = _context.Categories.SingleOrDefault(p => p.Id == id);
+            return _mapper.Map<CategoryDto>(category);
         }
 
-        public Category Insert(Category category)
+        public CategoryDto Insert(CategoryDto categoryDto)
         {
+            var category = _mapper.Map<Category>(categoryDto);
+
             _context.Categories.Add(category);
             _context.SaveChanges();
 
-            return category;
+            categoryDto.Id = category.Id;
+            return categoryDto;
         }
 
         public bool IsExist(int id)
         {
-            return _context.Categories.AsNoTracking().Any(p => p.Id == id);   
+            return _context.Categories.AsNoTracking().Any(p => p.Id == id);
         }
 
-        public void Update(Category category)
+        public void Update(CategoryDto categoryDto)
         {
+            var category = _mapper.Map<Category>(categoryDto);
+
             var entry = _context.Entry(category);
             entry.State = EntityState.Modified;
+
             _context.SaveChanges();
-
-            
         }
-
-     
     }
 }

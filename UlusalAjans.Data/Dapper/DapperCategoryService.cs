@@ -1,13 +1,8 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UIusalAjans.Domain.Entities;
 using UlusalAjans.Data.Abstract;
+using UlusalAjans.Domain.Dtos;
 
 namespace UlusalAjans.Data.Dapper
 {
@@ -15,40 +10,34 @@ namespace UlusalAjans.Data.Dapper
     {
         private readonly SqlConnection _connection;
 
-        public DapperCategoryService(SqlConnection connection)
+        public DapperCategoryService(IConfiguration configuration)
         {
-            _connection = connection;
+            _connection = new SqlConnection(configuration.GetConnectionString("NorthwindConnStr"));
         }
 
         public void Delete(int id)
         {
             var query = "delete from Categories where Id=@id";
-
-            _connection.Execute(query, new { @id = id });
+            _connection.Execute(query, new { @Id = id });
         }
 
-        public IEnumerable<Category> GetAll()
+        public IEnumerable<CategoryDto> GetAll()
         {
             var query = "select * from Categories";
-
-            return _connection.Query<Category>(query);
+            return _connection.Query<CategoryDto>(query);
         }
 
-        public Category GetById(int id)
+        public CategoryDto GetById(int id)
         {
             var query = "select * from Categories where Id=@id";
-            return _connection.QuerySingle<Category>(query, new { @id = id });
+            return _connection.QuerySingle<CategoryDto>(query, new { @id = id });
         }
 
-        public Category Insert(Category category)
+        public CategoryDto Insert(CategoryDto category)
         {
-            var query = "insert into Categories (Name,Description) values (@name,@description); select scope_identity()";
-
-            var id = _connection.ExecuteScalar<int>(query, 
-                new { @name = category.Name, @description = category.Description });
-
+            var query = "insert into Categories (Name,Description) values (@name,@description);select scope_identity()";
+            var id = _connection.ExecuteScalar<int>(query, new { @name = category.Name, @description = category.Description });
             category.Id = id;
-
             return category;
         }
 
@@ -59,10 +48,9 @@ namespace UlusalAjans.Data.Dapper
             return count > 0;
         }
 
-        public void Update(Category category)
+        public void Update(CategoryDto category)
         {
-            var query = "update Categories set Name=@name, Description=@description where Id=@id";
-
+            var query = "update Categories set Name=@name, Description=@description where Id=@id)";
             _connection.Execute(query, new { @name = category.Name, @description = category.Description, @id = category.Id });
         }
     }

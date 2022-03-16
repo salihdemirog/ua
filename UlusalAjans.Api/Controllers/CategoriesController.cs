@@ -4,6 +4,7 @@ using UIusalAjans.Domain.Entities;
 using UlusalAjans.Data;
 using UlusalAjans.Data.Abstract;
 using UlusalAjans.Data.EntityFramework;
+using UlusalAjans.Domain.Dtos;
 
 namespace UlusalAjans.Api.Controllers
 {
@@ -37,13 +38,13 @@ namespace UlusalAjans.Api.Controllers
             // return NoContent();
         }
         [HttpPost]
-        public IActionResult Post([FromBody] Category category)
+        public IActionResult Post([FromBody] CategoryDto category)
         {
             var addedCategory = _categoryService.Insert(category);
             return Created("", addedCategory);
         }
         [HttpPut("{id:int}")]
-        public IActionResult Put(int id, [FromBody] Category category)
+        public IActionResult Put(int id, [FromBody] CategoryDto category)
         {
             var isExist = _categoryService.IsExist(id);
             if (!isExist)
