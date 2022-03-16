@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UIusalAjans.Domain.Dtos;
 using UIusalAjans.Domain.Entities;
 using UlusalAjans.Data.Abstract;
 using UlusalAjans.Data.EntityFramework;
@@ -34,7 +35,7 @@ namespace UlusalAjans.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Product product)
+        public IActionResult Post([FromBody] ProductDto product)
         {
             var addedProduct = _productService.Insert(product);
 
@@ -42,7 +43,7 @@ namespace UlusalAjans.Api.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public IActionResult Put(int id, [FromBody] Product product)
+        public IActionResult Put(int id, [FromBody] ProductDto product)
         {
             var isExist = _productService.IsExist(id);
 

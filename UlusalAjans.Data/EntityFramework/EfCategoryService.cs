@@ -10,12 +10,10 @@ namespace UlusalAjans.Data.EntityFramework
         public EfCategoryService(NorthwindContext context)
         {
             _context = context; 
-
         }
 
         public void Delete(int id)
         {
-
             _context.Categories.Remove(new Category
             {
                 Id = id

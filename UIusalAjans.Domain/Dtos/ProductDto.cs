@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UIusalAjans.Domain.Entities;
 
-namespace UIusalAjans.Domain.Entities
+namespace UIusalAjans.Domain.Dtos
 {
-    public class Product
+    public class ProductDto
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
@@ -14,6 +15,5 @@ namespace UIusalAjans.Domain.Entities
         public string? QuantityPerUnit { get; set; }
         public decimal UnitPrice { get; set; }
         public short UnitsInStock { get; set; }
-        public Category? Category { get; set; }
     }
 }

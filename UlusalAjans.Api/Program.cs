@@ -1,5 +1,8 @@
+using AutoMapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using UIusalAjans.Domain.Dtos;
+using UIusalAjans.Domain.Profiles;
 using UlusalAjans.Api.Controllers;
 using UlusalAjans.Data.Abstract;
 using UlusalAjans.Data.Dapper;
@@ -25,6 +28,8 @@ builder.Services.AddDbContext<NorthwindContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("NorthwindConnStr"));
 });
+
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
 var app = builder.Build();
 

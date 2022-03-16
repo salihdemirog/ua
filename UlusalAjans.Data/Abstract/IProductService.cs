@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UIusalAjans.Domain.Dtos;
 using UIusalAjans.Domain.Entities;
 
 namespace UlusalAjans.Data.Abstract
 {
     public interface IProductService
     {
-        Product GetById(int id);    
+        ProductDto GetById(int id);    
 
-        IEnumerable<Product> GetAll();
+        IEnumerable<ProductDto> GetAll();
 
-        Product Insert(Product product);
+        ProductDto Insert(ProductDto product);
 
-        void Update(Product product);
+        void Update(ProductDto product);
 
         void Delete(int id);
 
