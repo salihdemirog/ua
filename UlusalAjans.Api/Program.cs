@@ -1,3 +1,4 @@
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using UlusalAjans.Api.Controllers;
 using UlusalAjans.Data.Abstract;
@@ -14,6 +15,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProductService, EfProductService>();
 builder.Services.AddScoped<ICategoryService, DapperCategoryService>();
+
+builder.Services.AddScoped<SqlConnection>(_ =>
+{
+    return new SqlConnection(builder.Configuration.GetConnectionString("NorthwindConnStr"));
+});
 
 builder.Services.AddDbContext<NorthwindContext>(options =>
 {

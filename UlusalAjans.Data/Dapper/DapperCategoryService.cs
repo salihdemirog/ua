@@ -11,13 +11,13 @@ using UlusalAjans.Data.Abstract;
 
 namespace UlusalAjans.Data.Dapper
 {
-    public class DapperCategoryService : ICategoryService, IDisposable
+    public class DapperCategoryService : ICategoryService
     {
         private readonly SqlConnection _connection;
 
-        public DapperCategoryService(IConfiguration configuration)
+        public DapperCategoryService(SqlConnection connection)
         {
-            _connection = new SqlConnection(configuration.GetConnectionString("NorthwindConnStr"));
+            _connection = connection;
         }
 
         public void Delete(int id)
@@ -25,11 +25,6 @@ namespace UlusalAjans.Data.Dapper
             var query = "delete from Categories where Id=@id";
 
             _connection.Execute(query, new { @id = id });
-        }
-
-        public void Dispose()
-        {
-            _connection?.Dispose();
         }
 
         public IEnumerable<Category> GetAll()
