@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using UlusalAjans.Api.Controllers;
 using UlusalAjans.Data.Abstract;
+using UlusalAjans.Data.Dapper;
 using UlusalAjans.Data.EntityFramework;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProductService, EfProductService>();
-builder.Services.AddScoped<ICategoryService, EfCategoryService>();
+builder.Services.AddScoped<ICategoryService, DapperCategoryService>();
 
 builder.Services.AddDbContext<NorthwindContext>(options =>
 {
