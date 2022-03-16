@@ -39,11 +39,13 @@ namespace UlusalAjans.Data.EntityFramework
             return _mapper.Map<IEnumerable<ProductDto>>(products);
         }
 
-        public ProductDto GetById(int id)
+        public ProductDetailDto GetById(int id)
         {
-            var product = _context.Products.SingleOrDefault(p => p.Id == id);
+            var product = _context.Products
+                .Include(x => x.Category)
+                .SingleOrDefault(p => p.Id == id);
 
-            return _mapper.Map<ProductDto>(product);
+            return _mapper.Map<ProductDetailDto>(product);
         }
 
         public ProductDto Insert(ProductDto productDto)

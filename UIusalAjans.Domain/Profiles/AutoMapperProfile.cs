@@ -15,6 +15,7 @@ namespace UIusalAjans.Domain.Profiles
         public AutoMapperProfile()
         {
             CreateMap<Product, ProductDto>();
+            CreateMap<Product, ProductDetailDto>();
             CreateMap<ProductDto, Product>();
 
             CreateMap<Category, CategoryDto>();
