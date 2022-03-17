@@ -1,8 +1,10 @@
 using AutoMapper;
+using FluentValidation.AspNetCore;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using UIusalAjans.Domain.Dtos;
 using UIusalAjans.Domain.Profiles;
+using UIusalAjans.Domain.ValidationRules;
 using UlusalAjans.Api.Controllers;
 using UlusalAjans.Data.Abstract;
 using UlusalAjans.Data.Dapper;
@@ -13,6 +15,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddFluentValidation(options =>
+{
+    options.RegisterValidatorsFromAssemblyContaining<ProductDtoValidator>();
+    options.DisableDataAnnotationsValidation = true;
+    options.AutomaticValidationEnabled = true;
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
