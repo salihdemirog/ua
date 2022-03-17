@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UIusalAjans.Domain.Entities;
 using UlusalAjans.Data;
@@ -37,14 +38,16 @@ namespace UlusalAjans.Api.Controllers
 
             // return NoContent();
         }
+
         [HttpPost]
         public IActionResult Post([FromBody] CategoryDto category)
         {
             var addedCategory = _categoryService.Insert(category);
             return Created("", addedCategory);
         }
+
         [HttpPut("{id:int}")]
-        public IActionResult Put(int id, [FromBody] CategoryDto category)
+        public IActionResult Put(int id, [FromBody, CustomizeValidator(RuleSet = "update")] CategoryDto category)
         {
             var isExist = _categoryService.IsExist(id);
             if (!isExist)
