@@ -1,10 +1,13 @@
 using AutoMapper;
 using FluentValidation.AspNetCore;
+using Hellang.Middleware.ProblemDetails;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using UIusalAjans.Domain.Dtos;
+using UIusalAjans.Domain.Exceptions;
 using UIusalAjans.Domain.Profiles;
 using UIusalAjans.Domain.ValidationRules;
+using UlusalAjans.Api;
 using UlusalAjans.Api.Controllers;
 using UlusalAjans.Data.Abstract;
 using UlusalAjans.Data.Dapper;
@@ -26,7 +29,7 @@ builder.Services.AddFluentValidation(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProductService, EfProductService>();
-builder.Services.AddScoped<ICategoryService, DapperCategoryService>();
+builder.Services.AddScoped<ICategoryService, EfCategoryService>();
 
 builder.Services.AddScoped<SqlConnection>(_ =>
 {
@@ -40,7 +43,19 @@ builder.Services.AddDbContext<NorthwindContext>(options =>
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
+builder.Services.AddProblemDetails(options =>
+{
+    options.IncludeExceptionDetails = (ctx, ex) => false;
+    options.MapToStatusCode<NotImplementedException>(StatusCodes.Status501NotImplemented);
+    options.Map<UlusalAjansException>(ex => new UlusalAjansProblemDetails(ex));
+    options.MapToStatusCode<Exception>(StatusCodes.Status500InternalServerError);
+});
+
 var app = builder.Build();
+
+app.UseProblemDetails();
+
+app.UseCustomMiddleware();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

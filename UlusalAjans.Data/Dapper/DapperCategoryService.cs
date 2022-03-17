@@ -35,6 +35,8 @@ namespace UlusalAjans.Data.Dapper
 
         public CategoryDto Insert(CategoryDto category)
         {
+            
+
             var query = "insert into Categories (Name,Description) values (@name,@description);select scope_identity()";
             var id = _connection.ExecuteScalar<int>(query, new { @name = category.Name, @description = category.Description });
             category.Id = id;

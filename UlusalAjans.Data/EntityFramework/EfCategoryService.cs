@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using UIusalAjans.Domain.Entities;
+using UIusalAjans.Domain.Exceptions;
 using UlusalAjans.Data.Abstract;
 using UlusalAjans.Domain.Dtos;
 
@@ -42,6 +43,9 @@ namespace UlusalAjans.Data.EntityFramework
 
         public CategoryDto Insert(CategoryDto categoryDto)
         {
+            if (_context.Categories.Any(t => t.Name == categoryDto.Name))
+                throw new UlusalAjansException("Aynı kategori adından sistemde mevcuttur");
+
             var category = _mapper.Map<Category>(categoryDto);
 
             _context.Categories.Add(category);
