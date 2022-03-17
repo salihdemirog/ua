@@ -10,18 +10,18 @@ namespace UlusalAjans.Data.Abstract
 {
     public interface IProductService
     {
-        ProductDetailDto GetById(int id);
+        Task<ProductDetailDto> GetByIdAsync(int id);
 
-        IEnumerable<ProductDto> GetByCategoryId(int categoryId);
+        Task<IEnumerable<ProductDto>> GetByCategoryIdAsync(int categoryId);
 
-        IEnumerable<ProductDto> GetAll();
+        Task<IEnumerable<ProductDto>> GetAllAsync();
 
-        ProductDto Insert(ProductDto product);
+        Task<ProductDto> InsertAsync(ProductDto product);
 
-        void Update(ProductDto product);
+        Task UpdateAsync(ProductDto product);
 
-        void Delete(int id);
+        Task DeleteAsync(int id);
 
-        bool IsExist(int id);
+        Task<bool> IsExistAsync(int id);
     }
 }

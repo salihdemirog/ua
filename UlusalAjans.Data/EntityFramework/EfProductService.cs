@@ -22,58 +22,57 @@ namespace UlusalAjans.Data.EntityFramework
             _mapper = mapper;
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
             _context.Products.Remove(new Product
             {
                 Id = id
             });
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public IEnumerable<ProductDto> GetAll()
+        public async Task<IEnumerable<ProductDto>> GetAllAsync()
         {
-            var products = _context.Products.ToList();
+            var products = await _context.Products.ToListAsync();
 
             return _mapper.Map<IEnumerable<ProductDto>>(products);
         }
 
-        public IEnumerable<ProductDto> GetByCategoryId(int categoryId)
+        public async Task<IEnumerable<ProductDto>> GetByCategoryIdAsync(int categoryId)
         {
-            var products = _context.Products.Where(t => t.CategoryId == categoryId).ToList();
+            var products =await _context.Products
+                .Where(t => t.CategoryId == categoryId).ToListAsync();
 
-            var result = products.ToList();
-            return Enumerable.Empty<ProductDto>();
-            //return _mapper.Map<IEnumerable<ProductDto>>(products);
+            return _mapper.Map<IEnumerable<ProductDto>>(products);
         }
 
-        public ProductDetailDto GetById(int id)
+        public async Task<ProductDetailDto> GetByIdAsync(int id)
         {
-            var product = _context.Products
+            var product = await _context.Products
                 .Include(x => x.Category)
-                .SingleOrDefault(p => p.Id == id);
+                .SingleOrDefaultAsync(p => p.Id == id);
 
             return _mapper.Map<ProductDetailDto>(product);
         }
 
-        public ProductDto Insert(ProductDto productDto)
+        public async Task<ProductDto> InsertAsync(ProductDto productDto)
         {
             var product = _mapper.Map<Product>(productDto);
 
             _context.Products.Add(product);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             productDto.Id = product.Id;
             return productDto;
         }
 
-        public bool IsExist(int id)
+        public Task<bool> IsExistAsync(int id)
         {
-            return _context.Products.AsNoTracking().Any(p => p.Id == id);
+            return _context.Products.AsNoTracking().AnyAsync(p => p.Id == id);
         }
 
-        public void Update(ProductDto productDto)
+        public async Task UpdateAsync(ProductDto productDto)
         {
             //var addedProduct = GetById(product.Id);
             //addedProduct.Name = product.Name;
@@ -84,7 +83,7 @@ namespace UlusalAjans.Data.EntityFramework
             var entry = _context.Entry(product);
             entry.State = EntityState.Modified;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }

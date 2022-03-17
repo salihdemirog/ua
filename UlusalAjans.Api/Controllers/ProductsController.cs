@@ -19,47 +19,48 @@ namespace UlusalAjans.Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> GetAsync()
         {
-            var products = _productService.GetAll();
+            var products = await _productService.GetAllAsync();
 
             return Ok(products);
         }
 
         [HttpGet("{id:int}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            var product = _productService.GetById(id);
+            var product = await _productService.GetByIdAsync(id);
 
             return Ok(product);
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] ProductDto product)
+        public async Task<IActionResult> PostAsync([FromBody] ProductDto product)
         {
-            var addedProduct = _productService.Insert(product);
+            var addedProduct = await _productService.InsertAsync(product);
 
             return Created("", addedProduct);
         }
 
         [HttpPut("{id:int}")]
-        public IActionResult Put(int id, [FromBody] ProductDto product)
+        public async Task<IActionResult> PutAsync(int id, [FromBody] ProductDto product)
         {
-            var isExist = _productService.IsExist(id);
+            var isExist = await _productService.IsExistAsync(id);
 
+           
             if (!isExist)
                 return NotFound();
 
             product.Id = id;
-            _productService.Update(product);
+            await _productService.UpdateAsync(product);
 
             return Ok();
         }
 
         [HttpDelete("{id:int}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> DeleteAsync(int id)
         {
-            _productService.Delete(id);
+            await _productService.DeleteAsync(id);
 
             return Ok();
         }
