@@ -34,9 +34,18 @@ namespace UlusalAjans.Data.EntityFramework
 
         public IEnumerable<ProductDto> GetAll()
         {
-            var products = _context.Products;
+            var products = _context.Products.ToList();
 
             return _mapper.Map<IEnumerable<ProductDto>>(products);
+        }
+
+        public IEnumerable<ProductDto> GetByCategoryId(int categoryId)
+        {
+            var products = _context.Products.Where(t => t.CategoryId == categoryId).ToList();
+
+            var result = products.ToList();
+            return Enumerable.Empty<ProductDto>();
+            //return _mapper.Map<IEnumerable<ProductDto>>(products);
         }
 
         public ProductDetailDto GetById(int id)

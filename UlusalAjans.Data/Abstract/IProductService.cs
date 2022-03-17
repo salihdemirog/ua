@@ -10,7 +10,9 @@ namespace UlusalAjans.Data.Abstract
 {
     public interface IProductService
     {
-        ProductDetailDto GetById(int id);    
+        ProductDetailDto GetById(int id);
+
+        IEnumerable<ProductDto> GetByCategoryId(int categoryId);
 
         IEnumerable<ProductDto> GetAll();
 
