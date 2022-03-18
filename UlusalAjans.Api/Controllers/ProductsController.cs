@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using UIusalAjans.Domain.Dtos;
 using UIusalAjans.Domain.Entities;
 using UlusalAjans.Data.Abstract;
@@ -9,6 +11,7 @@ namespace UlusalAjans.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "admin")]
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _productService;
@@ -21,12 +24,17 @@ namespace UlusalAjans.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAsync()
         {
+            var user = User;
+            //if(!User.Identity.IsAuthenticated)
+            //    return Unauthorized();
+
             var products = await _productService.GetAllAsync();
 
             return Ok(products);
         }
 
         [HttpGet("{id:int}")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAsync(int id)
         {
             var product = await _productService.GetByIdAsync(id);
@@ -47,7 +55,7 @@ namespace UlusalAjans.Api.Controllers
         {
             var isExist = await _productService.IsExistAsync(id);
 
-           
+
             if (!isExist)
                 return NotFound();
 
@@ -58,8 +66,12 @@ namespace UlusalAjans.Api.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize(Policy = "gmail")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
+            //if(User.FindFirst(ClaimTypes.Email).Value.Contains("@gmail.com"))
+            //    return Forbid();
+
             await _productService.DeleteAsync(id);
 
             return Ok();
