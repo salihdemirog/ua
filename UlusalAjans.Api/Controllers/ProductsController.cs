@@ -15,10 +15,12 @@ namespace UlusalAjans.Api.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _productService;
+        private readonly ILogger<ProductsController> _logger;
 
-        public ProductsController(IProductService productService)
+        public ProductsController(IProductService productService, ILogger<ProductsController> logger)
         {
             _productService = productService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -37,6 +39,7 @@ namespace UlusalAjans.Api.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetAsync(int id)
         {
+            _logger.LogWarning("Bu bir log kaydıdır");
             var product = await _productService.GetByIdAsync(id);
 
             return Ok(product);

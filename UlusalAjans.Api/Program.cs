@@ -17,8 +17,23 @@ using UlusalAjans.Api.Controllers;
 using UlusalAjans.Data.Abstract;
 using UlusalAjans.Data.Dapper;
 using UlusalAjans.Data.EntityFramework;
+using Serilog;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication
+    .CreateBuilder(args);
+
+builder.Logging.ClearProviders();
+
+builder.Host
+    .UseSerilog((context, provider, configuration) =>
+    {
+        configuration.ReadFrom.Configuration(context.Configuration);
+        configuration.ReadFrom.Services(provider);
+        configuration.Enrich.FromLogContext();
+
+        configuration.WriteTo.Console();
+        configuration.WriteTo.File("log.txt");
+    });
 
 // Add services to the container.
 
@@ -157,6 +172,9 @@ else
     app.UseHttpsRedirection();
     app.UseCors("corsprod");
 }
+
+
+app.UseSerilogRequestLogging();
 
 app.UseAuthentication();
 app.UseAuthorization();

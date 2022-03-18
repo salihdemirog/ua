@@ -1,0 +1,60 @@
+2022-03-18 15:46:17.908 +03:00 [INF] User profile is available. Using 'C:\Users\salihdemirog\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-03-18 15:46:18.178 +03:00 [INF] Now listening on: http://localhost:5052
+2022-03-18 15:46:18.182 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-18 15:46:18.184 +03:00 [INF] Hosting environment: Development
+2022-03-18 15:46:18.185 +03:00 [INF] Content root path: C:\Users\salihdemirog\source\repos\ua\UlusalAjans.Api\
+2022-03-18 15:46:19.515 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5052/swagger/index.html - -
+2022-03-18 15:46:19.609 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5052/_framework/aspnetcore-browser-refresh.js - -
+2022-03-18 15:46:19.664 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5052/_framework/aspnetcore-browser-refresh.js - - - 200 11988 application/javascript;+charset=utf-8 37.3919ms
+2022-03-18 15:46:20.026 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5052/swagger/index.html - - - 200 - text/html;charset=utf-8 517.8367ms
+2022-03-18 15:46:20.039 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5052/_framework/aspnetcore-browser-refresh.js - -
+2022-03-18 15:46:20.041 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5052/_framework/aspnetcore-browser-refresh.js - - - 200 11988 application/javascript;+charset=utf-8 1.9092ms
+2022-03-18 15:46:20.060 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5052/swagger/v1/swagger.json - -
+2022-03-18 15:46:20.246 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5052/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 185.5946ms
+2022-03-18 15:46:20.380 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5052/swagger/v1/swagger.json - -
+2022-03-18 15:46:20.386 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5052/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 6.0924ms
+2022-03-18 15:46:23.105 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5052/_framework/aspnetcore-browser-refresh.js - -
+2022-03-18 15:46:23.107 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5052/_framework/aspnetcore-browser-refresh.js - - - 200 11988 application/javascript;+charset=utf-8 1.9695ms
+2022-03-18 15:46:23.242 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5052/swagger/v1/swagger.json - -
+2022-03-18 15:46:23.245 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5052/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 3.0154ms
+2022-03-18 15:48:42.697 +03:00 [INF] User profile is available. Using 'C:\Users\salihdemirog\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-03-18 15:48:42.912 +03:00 [INF] Now listening on: http://localhost:5052
+2022-03-18 15:48:42.916 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-18 15:48:42.917 +03:00 [INF] Hosting environment: Development
+2022-03-18 15:48:42.918 +03:00 [INF] Content root path: C:\Users\salihdemirog\source\repos\ua\UlusalAjans.Api\
+2022-03-18 15:48:44.257 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5052/swagger/index.html - -
+2022-03-18 15:48:44.394 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5052/_framework/aspnetcore-browser-refresh.js - -
+2022-03-18 15:48:44.426 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5052/_framework/aspnetcore-browser-refresh.js - - - 200 11988 application/javascript;+charset=utf-8 27.5262ms
+2022-03-18 15:48:44.707 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5052/swagger/v1/swagger.json - -
+2022-03-18 15:48:44.736 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5052/_framework/aspnetcore-browser-refresh.js - -
+2022-03-18 15:48:44.783 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5052/swagger/index.html - - - 200 - text/html;charset=utf-8 529.5895ms
+2022-03-18 15:48:44.785 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5052/_framework/aspnetcore-browser-refresh.js - - - 200 11988 application/javascript;+charset=utf-8 48.4037ms
+2022-03-18 15:48:44.980 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5052/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 273.4033ms
+2022-03-18 15:48:45.109 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5052/swagger/v1/swagger.json - -
+2022-03-18 15:48:45.116 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5052/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 6.6489ms
+2022-03-18 15:48:47.406 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5052/_framework/aspnetcore-browser-refresh.js - -
+2022-03-18 15:48:47.410 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5052/_framework/aspnetcore-browser-refresh.js - - - 200 11988 application/javascript;+charset=utf-8 4.6046ms
+2022-03-18 15:48:47.412 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5052/_framework/aspnetcore-browser-refresh.js - -
+2022-03-18 15:48:47.416 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5052/_framework/aspnetcore-browser-refresh.js - - - 200 11988 application/javascript;+charset=utf-8 3.5587ms
+2022-03-18 15:48:47.646 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5052/swagger/v1/swagger.json - -
+2022-03-18 15:48:47.652 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5052/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 5.3609ms
+2022-03-18 15:48:47.660 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5052/swagger/v1/swagger.json - -
+2022-03-18 15:48:47.663 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5052/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 3.0479ms
+2022-03-18 15:48:53.007 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5052/api/Products/1 - -
+2022-03-18 15:48:53.130 +03:00 [INF] Executing endpoint 'UlusalAjans.Api.Controllers.ProductsController.GetAsync (UlusalAjans.Api)'
+2022-03-18 15:48:53.168 +03:00 [INF] Route matched with {action = "Get", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAsync(Int32) on controller UlusalAjans.Api.Controllers.ProductsController (UlusalAjans.Api).
+2022-03-18 15:48:53.606 +03:00 [INF] Executing action method UlusalAjans.Api.Controllers.ProductsController.GetAsync (UlusalAjans.Api) - Validation state: "Valid"
+2022-03-18 15:48:53.612 +03:00 [WRN] Bu bir log kaydıdır
+2022-03-18 15:48:54.305 +03:00 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2022-03-18 15:48:54.486 +03:00 [INF] Entity Framework Core 6.0.3 initialized 'NorthwindContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.3' with options: None
+2022-03-18 15:48:55.355 +03:00 [INF] Executed DbCommand (64ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [p].[Id], [p].[CategoryId], [p].[Name], [p].[QuantityPerUnit], [p].[UnitPrice], [p].[UnitsInStock], [c].[Id], [c].[Description], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+WHERE [p].[Id] = @__id_0
+2022-03-18 15:48:55.487 +03:00 [INF] Executed action method UlusalAjans.Api.Controllers.ProductsController.GetAsync (UlusalAjans.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1870.9687ms.
+2022-03-18 15:48:55.497 +03:00 [INF] Executing OkObjectResult, writing value of type 'UIusalAjans.Domain.Dtos.ProductDetailDto'.
+2022-03-18 15:48:55.510 +03:00 [INF] Executed action UlusalAjans.Api.Controllers.ProductsController.GetAsync (UlusalAjans.Api) in 2334.5499ms
+2022-03-18 15:48:55.514 +03:00 [INF] Executed endpoint 'UlusalAjans.Api.Controllers.ProductsController.GetAsync (UlusalAjans.Api)'
+2022-03-18 15:48:55.520 +03:00 [INF] HTTP GET /api/Products/1 responded 200 in 2503.6937 ms
+2022-03-18 15:48:55.526 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5052/api/Products/1 - - - 200 - application/json;+charset=utf-8 2518.0583ms
